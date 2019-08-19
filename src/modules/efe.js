@@ -1,13 +1,21 @@
 const fetch = require("node-fetch");
-const reddit_link1 = 'https://www.reddit.com/r/Sexy/random.json';
+const reddit_girl = 'https://www.reddit.com/r/Sexy/random.json';
 // const reddit_link2 = 'https://www.reddit.com/r/nudes/random.json';
-const reddit_link3 = 'https://www.reddit.com/r/BellaThorne/random.json';
-
+const reddit_bella = 'https://www.reddit.com/r/BellaThorne/random.json';
+const reddit_cat = 'http://reddit.com/r/cat/random.json';
 export default (bot) => {
 
     bot.hears('bella', (ctx) => {
 
-        fetch(reddit_link3)
+        fetch(reddit_bella)
+            .then(response => response.json())
+            .then(data => ctx.replyWithPhoto(data[0]['data']['children'][0]['data']['url']))
+
+    })
+
+    bot.hears('cat', (ctx) => {
+
+        fetch(reddit_cat)
             .then(response => response.json())
             .then(data => ctx.replyWithPhoto(data[0]['data']['children'][0]['data']['url']))
 
@@ -25,7 +33,7 @@ export default (bot) => {
    */
     bot.hears('girl', (ctx) => {
 
-        fetch(reddit_link1)
+        fetch(reddit_girl)
             .then(response => response.json())
             .then(data => ctx.replyWithPhoto(data[0]['data']['children'][0]['data']['url']))
 
