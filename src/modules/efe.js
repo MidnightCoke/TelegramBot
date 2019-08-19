@@ -42,6 +42,7 @@ export default (bot) => {
 
     bot.on('text', (ctx) => {
         let messages = {
+            "info": "Bella Throne için :bella \nGüzel kızlar için :girl\n Kedi Fotoğrafları için :cat \n yazabilirsiniz :) ",
             "ağla": "ÜHÜHÜHÜHÜHÜHÜHÜHÜHÜHÜHÜ",
             "hapşu": "ÇOK YAŞA",
             "delir": "OOOOWOAOWPOFQMPOFMEKPFMWOMDFEOIĞMDJWDNIEFN",
