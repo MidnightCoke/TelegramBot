@@ -1,13 +1,31 @@
 const fetch = require("node-fetch");
 const reddit_girl = 'https://www.reddit.com/r/Sexy/random.json';
-// const reddit_link2 = 'https://www.reddit.com/r/nudes/random.json';
+const reddit_real_girls = 'https://reddit.com/r/RealGirls/random.json';
 const reddit_bella = 'https://www.reddit.com/r/BellaThorne/random.json';
 const reddit_cat = 'http://reddit.com/r/cat/random.json';
+const reddit_college = 'https://www.reddit.com/r/collegesluts/random.json';
+const reddit_titdrop = 'https://www.reddit.com/r/TittyDrop/random.json';
 export default (bot) => {
 
     bot.hears('bella', (ctx) => {
 
         fetch(reddit_bella)
+            .then(response => response.json())
+            .then(data => ctx.replyWithPhoto(data[0]['data']['children'][0]['data']['url']))
+
+    })
+
+    bot.hears('titdrop', (ctx) => {
+
+        fetch(reddit_titdrop)
+            .then(response => response.json())
+            .then(data => ctx.replyWithAnimation(data[0]['data']['children'][0]['data']['media']['oembed']['thumbnail_url']))
+
+    })
+
+    bot.hears('college', (ctx) => {
+
+        fetch(reddit_college)
             .then(response => response.json())
             .then(data => ctx.replyWithPhoto(data[0]['data']['children'][0]['data']['url']))
 
@@ -22,15 +40,15 @@ export default (bot) => {
     })
 
     //TODO: WORKING ON THIS
-    /*
-       bot.hears('nude', (ctx) => {
-   
-           fetch(reddit_link2)
-               .then(response => response.json())
-               .then(data => ctx.replyWithPhoto(data[0]['data']['children'][0]['data']['url']))
-   
-       })
-   */
+
+    bot.hears('nude', (ctx) => {
+
+        fetch(reddit_real_girls)
+            .then(response => response.json())
+            .then(data => ctx.replyWithPhoto(data[0]['data']['children'][0]['data']['url']))
+
+    })
+
     bot.hears('girl', (ctx) => {
 
         fetch(reddit_girl)
@@ -42,12 +60,13 @@ export default (bot) => {
 
     bot.on('text', (ctx) => {
         let messages = {
-            "info": "Bella Throne için :bella \nGüzel kızlar için :girl\n Kedi Fotoğrafları için :cat \n yazabilirsiniz :) ",
+            "info": "Bella Throne için: bella\nCollege icin: college\nNude icin: nude\nGüzel kızlar için: girl\nKedi Fotoğrafları için: cat\nYeni eklenen özelliği denemek için: titdrop\n yazabilirsiniz :) ",
             "ağla": "ÜHÜHÜHÜHÜHÜHÜHÜHÜHÜHÜHÜ",
             "hapşu": "ÇOK YAŞA",
             "delir": "OOOOWOAOWPOFQMPOFMEKPFMWOMDFEOIĞMDJWDNIEFN",
             "sa": "as",
             "merhaba": "merhaba",
+            "kudur": "AAAHHHAAAAAAAA",
 
 
         }
